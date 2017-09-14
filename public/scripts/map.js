@@ -38,9 +38,3 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
     }
   );
 }
-
-// exports.map = function() {
-//   return "Hello";
-// }
-
-//function routeForm() {}

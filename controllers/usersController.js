@@ -20,7 +20,21 @@ function show(req, res) {
   });
 }
 
+//POST /api/users/
+function create(req, res) {
+  console.log("form", req.body);
+  //Send data to DB
+  db.User.create(req.body, function(err, user) {
+    if (err) {
+      console.log("Create ERROR", err);
+    }
+    console.log("Created this user", user);
+    res.json(user);
+  });
+}
+
 module.exports = {
   index: index,
-  show: show
+  show: show,
+  create: create
 };

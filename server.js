@@ -22,6 +22,7 @@ app.get("/api", controllers.api.index);
 //Users server-routes
 app.get("/api/users", controllers.users.index);
 app.get("/api/users/:userId", controllers.users.show);
+app.post("/api/users", controllers.users.create);
 
 //LISTENING
 
