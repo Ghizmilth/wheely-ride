@@ -12,7 +12,8 @@ $(document).ready(function() {
     method: "GET",
     url: "/api/users",
     success: function(data) {
-      renderRoutes(data);
+      renderOneUser(data);
+      //renderRoutes(data);
     }
   });
 
