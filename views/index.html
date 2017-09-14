@@ -3,8 +3,33 @@
   <head>
     <meta charset="utf-8">
     <title>Wheely Ride</title>
+
+
+    <!--Stylesheets-->
+    <link rel="stylesheet" href="styles/styles.css">
+
+    <!-- VENDOR SCRIPTS -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmK3eWCI9R6rI31fLCARImWUV2xqd5gWM&callback=initMap">
+    </script>
+    <!--Aplication scripts -->
+    <script src="/scripts/app.js"></script>
+
   </head>
   <body>
 Hello Hidaner, YOU CAN MAKE IT!!!
+
+<div id="floating-panel">
+  <b>Mode of Travel: </b>
+  <select id="mode">
+    <option value="DRIVING">Driving</option>
+    <option value="WALKING">Walking</option>
+    <option value="BICYCLING">Bicycling</option>
+    <option value="TRANSIT">Transit</option>
+  </select>
+  </div>
+  <div id="map"></div>
+
   </body>
 </html>

@@ -1,17 +1,17 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-var User = require("./users");
+var Route = require("./routes");
 
 let UserSchema = new Schema({
   first_name: String,
   last_name: String,
   username: String,
   bike_style: String,
-  age: integer
+  age: Number,
   routes: [Route.schema]
 });
 
-let User = mongoose.model("User", UserSchemea);
+let User = mongoose.model("User", UserSchema);
 
-module.exports = City;
+module.exports = User;

@@ -15,7 +15,12 @@ app.get("/", function home(req, res) {
 });
 
 //JSON endpoints
+
+//general project info
 app.get("/api", controllers.api.index);
+
+//Routes server-routes
+//app.get("/api/routes", controllers.routes.index);
 
 //LISTENING
 
