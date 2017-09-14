@@ -1,7 +1,7 @@
-// var start_lat = 37.77,
-//   start_lon = -122.447,
-//   end_lat = 37.768,
-//   end_lon = -122.511;
+var start_lat = 37.77,
+  start_lon = -122.447,
+  end_lat = 37.768,
+  end_lon = -122.511;
 //const map = require("./map.js");
 
 $(document).ready(function() {
@@ -9,18 +9,19 @@ $(document).ready(function() {
 
   //AJAX call to show routes - allows to show routes on main page
 
-  // $.ajax({
-  //   method: "GET",
-  //   url: "/api/routes",
-  //   success: function(data) {
-  //     renderRoutes(data);
-  //   }
-  // });
+  $.ajax({
+    method: "GET",
+    url: "/api/routes",
+    success: function(data) {
+      renderRoutes(data);
+    }
+  });
 
-  initMap();
+  //  initMap();
 });
 
-// //render routes on HTML
-// function renderRoutes(data) {
-//   console.log("This is just a test");
-// }
+//render routes on HTML
+
+function renderRoutes(data) {
+  initMap();
+}

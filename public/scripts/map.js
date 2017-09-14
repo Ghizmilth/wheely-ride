@@ -1,5 +1,6 @@
-function initMap() {
-  console.log("mao is initiated");
+function initMap(start, end) {
+  //routeForm();
+  console.log("map is initiated");
   var directionsDisplay = new google.maps.DirectionsRenderer();
   var directionsService = new google.maps.DirectionsService();
   var map = new google.maps.Map(document.getElementById("map"), {
@@ -18,8 +19,11 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
   var selectedMode = document.getElementById("mode").value;
   directionsService.route(
     {
-      origin: { lat: 37.77, lng: -122.447 }, // Haight.
-      destination: { lat: 37.768, lng: -122.511 }, // Ocean Beach.
+      // origin: { lat: 37.77, lng: -122.447 }, // Haight.
+      // destination: { lat: 37.768, lng: -122.511 }, // Ocean Beach.
+      origin: { lat: parseFloat(start_lat), lng: parseFloat(start_lon) }, // Haight.
+      destination: { lat: parseFloat(end_lat), lng: parseFloat(end_lon) }, // Ocean Beach.
+
       // Note that Javascript allows us to access the constant
       // using square brackets and a string value as its
       // "property."
@@ -38,3 +42,5 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
 // exports.map = function() {
 //   return "Hello";
 // }
+
+//function routeForm() {}

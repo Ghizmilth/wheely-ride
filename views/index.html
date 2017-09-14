@@ -6,21 +6,42 @@
 
 
     <!--Stylesheets-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="styles/styles.css">
 
     <!-- VENDOR SCRIPTS -->
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmK3eWCI9R6rI31fLCARImWUV2xqd5gWM&callback=initMap">
     </script>
     <!--Aplication scripts -->
-    <script type="text/javascript" src="/scripts/map.js"></script>
+
     <script type="text/javascript" src="/scripts/app.js"></script>
+    <script type="text/javascript" src="/scripts/map.js"></script>
 
     </script>
   </head>
   <body>
+
+    <form id="coordinates-test">
+      starting lat:<br>
+      <input type="text" name="start_lat">
+      <br>
+      <input type="text" name="start_lat">
+      <br>
+      <input type="text" name="start_lat">
+      <br>
+      <input type="text" name="start_lat">
+      <br>
+      <input type="submit" value="Submit">
+    </form>
+
+
+
+
+
 
     <div id="floating-panel">
       <b>Mode of Travel: </b>
@@ -33,6 +54,99 @@
     </div>
 
   <div id="map"></div>
+
+
+  <!--FORM to add city modal-->
+
+  <!-- begin cityModal: this is not visible until you call .modal() on it -->
+  <div class="modal fade" tabindex="-1" role="dialog" id="cityModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Add User</h4>
+        </div>
+        <div class="modal-body">
+
+          <fieldset class='form-horizontal'>
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="cityName">City Name</label>
+              <div class="col-md-4">
+                <input id="name" name="cityName" type="text" placeholder="" class="form-control input-md" required="">
+              </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="description">Description</label>
+              <div class="col-md-4">
+                <input id="description" name="description" type="text" placeholder="" class="form-control input-md">
+              </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="coordinates">Coordinates</label>
+              <div class="col-md-4">
+                <input id="coordinates" name="coordinates" type="text" placeholder="" class="form-control input-md">
+              </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="population">Population</label>
+              <div class="col-md-4">
+                <input id="population" name="population" type="text" placeholder="" class="form-control input-md">
+              </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="area">Area</label>
+              <div class="col-md-4">
+                <input id="area" name="area" type="text" placeholder="" class="form-control input-md">
+              </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="elevation">Elevation</label>
+              <div class="col-md-4">
+                <input id="elevation" name="elevation" type="text" placeholder="" class="form-control input-md">
+              </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="time_zone">Time Zone</label>
+              <div class="col-md-4">
+                <input id="time_zone" name="time_zone" type="text" placeholder="" class="form-control input-md">
+              </div>
+            </div>
+
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="imageURL">Image URL</label>
+              <div class="col-md-4">
+                <input id="imageURL" name="imageURL" type="imageURL" placeholder="" class="form-control input-md">
+              </div>
+            </div>
+
+          </fieldset>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="saveCity">Save changes</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
 
   </body>
 </html>

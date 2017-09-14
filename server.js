@@ -19,8 +19,9 @@ app.get("/", function home(req, res) {
 //general project info
 app.get("/api", controllers.api.index);
 
-//Routes server-routes
-//app.get("/api/routes", controllers.routes.index);
+//Users server-routes
+app.get("/api/users", controllers.users.index);
+app.get("/api/users/:userId", controllers.users.show);
 
 //LISTENING
 
