@@ -23,6 +23,7 @@ app.get("/api", controllers.api.index);
 app.get("/api/users", controllers.users.index);
 app.get("/api/users/:userId", controllers.users.show);
 app.post("/api/users", controllers.users.create);
+app.put("/api/users/:userId", controllers.users.update);
 
 //LISTENING
 

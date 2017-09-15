@@ -33,8 +33,30 @@ function create(req, res) {
   });
 }
 
+function update(req, res) {
+  db.User.findById(req.params.userId, function(err, foundUser) {
+    if (err) {
+      console.log("userControllers.update ERROR", err);
+    }
+
+    foundUser.first_name = req.body.first_name;
+    foundUser.last_name = req.body.last_name;
+    foundUser.username = req.body.username;
+    foundUser.bike_style = req.body.bike_style;
+    foundUser.age = req.body.age;
+
+    foundUser.save(function(err, savedUser) {
+      if (err) {
+        console.log("Saving updated user has failed");
+      }
+      res.json(savedUser);
+    });
+  });
+}
+
 module.exports = {
   index: index,
   show: show,
-  create: create
+  create: create.
+  update: update
 };

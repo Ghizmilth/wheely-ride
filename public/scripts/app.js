@@ -17,10 +17,12 @@ $(document).ready(function() {
     }
   });
 
-  //Add USer button CLICKED
-  $(".btn-add-user").on("click", addUserButton);
+  //Add User button CLICKED
+  $(".btn-add-user").on("click", addUserModal);
   //Handle SAVE USER button
   $("#userModal").on("click", "#saveUser", newUserSubmit);
+  //Handle UPDATE USER button
+  $("#user-render").on("click", ".btn-edit-user", updateUserModal);
 });
 
 //render map on HTML
@@ -29,7 +31,7 @@ function renderRoutes(data) {
 }
 
 //Handles when ADD A NEW USER button has been clicked
-function addUserButton(e) {
+function addUserModal(e) {
   console.log("Add User Button Clicked");
   $("#userModal").modal(); //display the ADD USER modal
 }
