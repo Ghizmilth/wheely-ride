@@ -111,7 +111,7 @@ function updateUserModal(user) {
                   <div class="form-group">
                     <label class="col-md-4 control-label" for="firstName">First Name</label>
                     <div class="col-md-4">
-                      <input id="firstName" name="firstName" type="text" placeholder="" value="${editUser.first_name}" class="form-control input-md" required="">
+                      <input id="firstName" name="firstName" type="text" placeholder="" value="${editUser.first_name}" class="form-control updated-first-name input-md" required="">
                     </div>
                   </div>
 
@@ -119,7 +119,7 @@ function updateUserModal(user) {
                   <div class="form-group">
                     <label class="col-md-4 control-label" for="lastName">Last Name</label>
                     <div class="col-md-4">
-                      <input id="lastName" name="lastName" type="text" placeholder="" value="${editUser.last_name}" class="form-control input-md">
+                      <input id="lastName" name="lastName" type="text" placeholder="" value="${editUser.last_name}" class="form-control updated-last-name input-md">
                     </div>
                   </div>
 
@@ -127,7 +127,7 @@ function updateUserModal(user) {
                   <div class="form-group">
                     <label class="col-md-4 control-label" for="username">Username</label>
                     <div class="col-md-4">
-                      <input id="username" name="username" type="text" placeholder="" value="${editUser.username}" class="form-control input-md">
+                      <input id="username" name="username" type="text" placeholder="" value="${editUser.username}" class="form-control updated-username input-md">
                     </div>
                   </div>
 
@@ -135,7 +135,7 @@ function updateUserModal(user) {
                   <div class="form-group">
                     <label class="col-md-4 control-label" for="bikeStyle">Bike Style</label>
                     <div class="col-md-4">
-                      <input id="bikeStyle" name="bikeStyle" type="text" placeholder="" value="${editUser.bike_style}" class="form-control input-md">
+                      <input id="bikeStyle" name="bikeStyle" type="text" placeholder="" value="${editUser.bike_style}" class="form-control updated-bike-style input-md">
                     </div>
                   </div>
 
@@ -143,7 +143,7 @@ function updateUserModal(user) {
                   <div class="form-group">
                     <label class="col-md-4 control-label" for="age">Age</label>
                     <div class="col-md-4">
-                      <input id="age" name="age" type="number" placeholder="" value="${editUser.age}" class="form-control input-md">
+                      <input id="age" name="age" type="number" placeholder="" value="${editUser.age}" class="form-control updated-age input-md">
                     </div>
                   </div>
 
