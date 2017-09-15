@@ -13,9 +13,7 @@
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmK3eWCI9R6rI31fLCARImWUV2xqd5gWM&callback=initMap">
-    </script>
+
     <!--Aplication scripts -->
 
     <script type="text/javascript" src="/scripts/app.js"></script>
@@ -28,8 +26,6 @@
   <body>
 
 
-    <!-- Render Map -->
-    <div id="map"></div>
 
 <div id="nav-bar">
   <nav class="container">
@@ -42,16 +38,13 @@
   </nav>
 </div>
 
+<form action="">
+<div id="addRoute">
+  <button type="button" value="Login Page" onclick="window.location.href='/login.html'" class="btn btn-other-page";/>
+</div>
+</form>
 
-    <div id="floating-panel">
-        <b>Mode of Travel: </b>
-        <select id="mode">
-          <!-- <option value="DRIVING">Driving</option> -->
-          <!-- <option value="WALKING">Walking</option> -->
-          <option value="BICYCLING">Bicycling</option>
-          <!-- <option value="TRANSIT">Transit</option> -->
-        </select>
-    </div>
+
 
 <!-- Render One User Area -->
 <div id="user-render"><div>

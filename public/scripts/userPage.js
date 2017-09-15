@@ -63,7 +63,7 @@ function renderOneUser(user) {
   end_lat = `${user[0].routes[0].end_lat}`;
   end_lon = `${user[0].routes[0].end_lon}`;
 
-  initMap();
+  //initMap();
 
   $("#user-render").append(oneUser);
 }
