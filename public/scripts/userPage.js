@@ -97,7 +97,7 @@ function updateUserModal(user) {
     console.log("got back the user object", editUser);
 
     let userToEdit = `<div class="container">
-       <div class="modal fade" tabindex="-1" role="dialog" id="userUpdateModal" data-user-id="${editUser._id}">
+       <div class="modal" tabindex="-1" role="dialog" id="userUpdateModal" data-user-id="${editUser._id}">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
@@ -107,7 +107,7 @@ function updateUserModal(user) {
               <div class="modal-body">
 
                 <fieldset class='form-horizontal'>
-                  <!-- Text input-->
+
                   <div class="form-group">
                     <label class="col-md-4 control-label" for="firstName">First Name</label>
                     <div class="col-md-4">
@@ -115,7 +115,7 @@ function updateUserModal(user) {
                     </div>
                   </div>
 
-                  <!-- Text input-->
+
                   <div class="form-group">
                     <label class="col-md-4 control-label" for="lastName">Last Name</label>
                     <div class="col-md-4">
@@ -123,7 +123,7 @@ function updateUserModal(user) {
                     </div>
                   </div>
 
-                  <!-- Text input-->
+
                   <div class="form-group">
                     <label class="col-md-4 control-label" for="username">Username</label>
                     <div class="col-md-4">
@@ -131,7 +131,7 @@ function updateUserModal(user) {
                     </div>
                   </div>
 
-                  <!-- Text input-->
+
                   <div class="form-group">
                     <label class="col-md-4 control-label" for="bikeStyle">Bike Style</label>
                     <div class="col-md-4">
@@ -139,7 +139,7 @@ function updateUserModal(user) {
                     </div>
                   </div>
 
-                  <!-- Text input-->
+
                   <div class="form-group">
                     <label class="col-md-4 control-label" for="age">Age</label>
                     <div class="col-md-4">
@@ -155,11 +155,8 @@ function updateUserModal(user) {
                 <button type="button" class="btn btn-primary" id="updateUser">Update Rider</button>
               </div>
             </div>
-            <!-- /.modal-content -->
           </div>
-          <!-- /.modal-dialog -->
         </div>
-        <!-- /.modal -->
       </div>`;
 
     //Renders modal into the HTML after loading the user INFORMATION
@@ -168,4 +165,70 @@ function updateUserModal(user) {
     //Calls modal to Show Up
     $("#userUpdateModal").modal();
   });
+}
+
+//Renders the updated info for the user
+function renderNewUpdatedUser(newUser) {
+  //confirm the user Id is correct
+  let userId = newUser._id;
+  console.log("rendering user", userId);
+  //get informaton from the current user to be rendered
+  clearDom();
+  //user.routesHtml = newUser.routes.map(oneRoute).join("");
+  var oneUserHtml = `
+<div class="container">
+    <div class="row city" data-city-id="${newUser._id}">
+        <div class="row"
+          <div class="col-md-12" id="style-city">
+            <h2>${newUser.first_name} ${newUser.last_name}</h2>
+          </div>
+        </div>
+
+      <div class="user-info">
+        <div class="row">
+          <div class="col-md-12" id="user-facts">
+              <ul id="edit-list">
+                  <li id="coordinatesInfo">Username: ${newUser.username}</li>
+                  <li id="cityPopulation">Bike Style: ${newUser.bike_style}</li>
+                  <li id="cityArea">Age: ${newUser.age}</li>
+              </ul>
+          </div>
+        </div>
+      </div>
+      <div class="edition-button">
+          <button type="button" class="btn btn-edit-user" data-user-id="${newUser._id}">Update User
+          </button>
+      </div>
+
+      <hr/>
+        <h3>My Routes</h3>
+      <div class="row" id="clear-this-also">
+          <button type="button" class="btn btn-add-route">Add a Route</button>
+      </div>
+      <hr>
+
+      <div id="routes-render">
+        <p>${newUser.routes[0].route_name}</P>
+        <p>${newUser.routes[0].start_lat}</P>
+        <p>${newUser.routes[0].start_lon}</P>
+        <p>${newUser.routes[0].end_lat}</P>
+        <p>${newUser.routes[0].end_lon}</P>
+        <p>${newUser.routes[0].miles}</P>
+        <p>${newUser.routes[0].climbing_ft}</P>
+        <p>${newUser.routes[0].pros}</P>
+        <p>${newUser.routes[0].cons}</P>
+        <p>${newUser.routes[0].city}</P>
+      </div>
+
+    </div>
+</div>`;
+
+  start_lat = `${newUser.routes[1].start_lat}`;
+  start_lon = `${newUser.routes[1].start_lon}`;
+  end_lat = `${newUser.routes[1].end_lat}`;
+  end_lon = `${newUser.routes[1].end_lon}`;
+
+  initMap();
+
+  $("#user-render").append(oneUserHtml);
 }

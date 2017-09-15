@@ -33,10 +33,10 @@ routesList.push({
 
 routesList.push({
   route_name: "Orinda Round",
-  start_lat: "37.6141",
-  start_lon: "-122.9725",
-  end_lat: "37.799",
-  end_lon: "-122.1606",
+  start_lat: "37.8061",
+  start_lon: "-122.2595",
+  end_lat: "37.8787",
+  end_lon: "-122.181606",
   miles: "20",
   climbing_ft: "2,200",
   pros: "Great scenery",

@@ -113,7 +113,21 @@ function handleUserUpdateResponse(data) {
   let updatedUserId = data._id;
   console.log(updatedUserId);
 
-  // clearDom();
-  //
-  // renderNewUpdatedUser(userData);
+  clearDom();
+
+  renderNewUpdatedUser(data);
+}
+
+function clearDom() {
+  $("#map div").html("");
+  $("#nav-bar div").html("");
+  $("#user-render div").html("");
+  $("#floating-panel div").html("");
+  $("#user-update-modal div").html("");
+  $(".container div").html("");
+  $(".modal-backdrop div").html("");
+
+  // $("nav").remove(".nav-bar");
+  // $("div").remove("#user-render");
+  // $("div").remove("#floating-panel");
 }
