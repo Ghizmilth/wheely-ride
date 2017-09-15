@@ -25,6 +25,10 @@ $(document).ready(function() {
   $("#user-render").on("click", ".btn-edit-user", updateUserModal);
   //Sends updated info to server and DB
   $("#user-update-modal").on("click", "#updateUser", editUserSubmit);
+  //handle DELETE USER button
+  $("#user-render").on("click", ".btn-delete-user", deleteUserModal);
+  //Sends Request to delete user from DB
+  $("#user-delete-modal").on("click", "#deleteUser", deleteUserSubmit);
 });
 
 //render map on HTML
@@ -107,6 +111,7 @@ function editUserSubmit(edit) {
   });
 }
 
+//Response after clicking delete user
 function handleUserUpdateResponse(data) {
   console.log("Response to update", data);
 
@@ -118,6 +123,36 @@ function handleUserUpdateResponse(data) {
   renderNewUpdatedUser(data);
 }
 
+//When DELETE USER button is clicked
+function deleteUserSubmit(data) {
+  console.log("deletion loads until here");
+  data.preventDefault();
+  let userId = $(this)
+    .parents("#userDeleteModal")
+    .data("user-id");
+  console.log("This user is going to be deleted", userId);
+
+  $("#userDeleteModal").modal("hide");
+
+  $.ajax({
+    url: "/api/users/" + userId,
+    method: "DELETE",
+    success: handleDeleteUserResponse
+  });
+}
+
+//Delete user Response
+function handleDeleteUserResponse(data) {
+  var deleteUserId = data._id;
+  console.log("Removing this user", deleteUserId);
+  $("div[data-user-id=" + deleteUserId + "]").remove();
+
+  clearDom();
+
+  renderOneUser();
+}
+
+//CLEAR THE DOM
 function clearDom() {
   $("#map div").html("");
   //$("#nav-bar div").html("");

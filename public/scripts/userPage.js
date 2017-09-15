@@ -31,6 +31,12 @@ function renderOneUser(user) {
             </button>
         </div>
 
+        <div class="delition-button">
+            <button type="button" class="btn btn-delete-user" data-user-id="${user[0]
+              ._id}">Delete User
+            </button>
+        </div>
+
         <hr/>
           <h3>My Routes</h3>
         <div class="row" id="clear-this-also">
@@ -231,4 +237,53 @@ function renderNewUpdatedUser(newUser) {
   initMap();
 
   $("#user-render").append(oneUserHtml);
+}
+
+function deleteUserModal(user) {
+  console.log(user);
+  let $userDelete = $(user.target);
+  let userId = $userDelete.data("user-id");
+  console.log("edit user", userId);
+
+  $.get("/api/users/" + userId, function(deleteUser) {
+    console.log("got back the user to be deleted", deleteUser);
+
+    let userToDelete = `<div class="container">
+       <div class="modal" tabindex="-1" role="dialog" id="userDeleteModal" data-user-id="${deleteUser._id}">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Confim Delete User</h4>
+              </div>
+              <div class="modal-body">
+
+                <fieldset class='form-horizontal'>
+
+                  <div class="form-group">
+                    <label class="col-md-4 control-label" for="firstName"></label>
+                    <div class="col-md-4">
+                      <h4>THIS ACTION CAN NOT BE REVERSED</h4>
+                      <p>Are you sure you want to Delete?</p>
+                    </div>
+                  </div>
+
+                </fieldset>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="deleteUser">Delete Profile</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>`;
+
+    //Renders modal into the HTML after loading the user INFORMATION
+    $("#user-delete-modal").prepend(userToDelete);
+
+    //Calls modal to Show Up
+    $("#userDeleteModal").modal();
+  });
 }
