@@ -54,9 +54,22 @@ function update(req, res) {
   });
 }
 
+function destroy(req, res) {
+  db.User.findOneAndRemove({ _id: req.params.userId }, function(
+    err,
+    foundUser
+  ) {
+    if (err) {
+      console.log("ERROR deleting user by id:", err);
+    }
+    res.json(foundUser);
+  });
+}
+
 module.exports = {
   index: index,
   show: show,
-  create: create.
-  update: update
+  create: create,
+  update: update,
+  destroy: destroy
 };
