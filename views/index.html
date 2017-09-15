@@ -7,11 +7,14 @@
 
     <!--Stylesheets-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/one-page-wonder.css">
     <link rel="stylesheet" href="styles/styles.css">
 
     <!-- VENDOR SCRIPTS -->
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="vendor/popper.min.js"></script>
+    <link href="styles/bootstrap.min.css" rel="stylesheet">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
     <!--Aplication scripts -->
@@ -27,180 +30,104 @@
   <body>
 
 
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+          <div class="container">
+            <a class="navbar-brand" href="#">Wheely Ride</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">Home
+                    <span class="sr-only">(current)</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/login.html">Login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Sign Up!</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Contact</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
 
-<div id="nav-bar">
-  <nav class="container">
-      <div id="addUSer">
-        <button type="button" class="btn btn-add-user">New User</button>
-      </div>
-      <div id="addRoute">
-        <button type="button" class="btn btn-add-route">New Route</button>
-      </div>
-  </nav>
-</div>
+        <header class="masthead">
+          <div class="overlay">
+            <div class="container">
+              <h1 class="display-1 text-white">One Page Wonder</h1>
+              <h2 class="display-4 text-white">Will Rock Your Socks Off</h2>
+            </div>
+          </div>
+        </header>
 
-<form action="">
-<div id="addRoute">
-  <button type="button" value="Login Page" onclick="window.location.href='/login.html'" class="btn btn-other-page";>Login Page</button>
-</div>
-</form>
-
-
-
-<!-- Render One User Area -->
-<div id="user-render"><div>
-
-
-
-
-
-
-
-
-
-<!-- Modal for USERS -->
-<div class="container">
-  <!--FORM to add user modal-->
-  <!-- begin userModal: this is not visible until you call .modal() on it -->
-  <div class="modal fade" tabindex="-1" role="dialog" id="userModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Add New Rider</h4>
-        </div>
-        <div class="modal-body">
-
-          <fieldset class='form-horizontal'>
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="firstName">First Name</label>
-              <div class="col-md-4">
-                <input id="firstName" name="firstName" type="text" placeholder="" class="form-control input-md" required="">
+        <section>
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col-md-6 order-2">
+                <div class="p-5">
+                  <img class="img-fluid rounded-circle" src="https://unsplash.it/500/500?image=836" alt="">
+                </div>
+              </div>
+              <div class="col-md-6 order-1">
+                <div class="p-5">
+                  <h2 class="display-4">For those about to rock...</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
+                </div>
               </div>
             </div>
+          </div>
+        </section>
 
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="lastName">Last Name</label>
-              <div class="col-md-4">
-                <input id="lastName" name="lastName" type="text" placeholder="" class="form-control input-md">
+        <section>
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col-md-6">
+                <div class="p-5">
+                  <img class="img-fluid rounded-circle" src="https://unsplash.it/500/500?image=452" alt="">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="p-5">
+                  <h2 class="display-4">We salute you!</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
+                </div>
               </div>
             </div>
+          </div>
+        </section>
 
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="username">Username</label>
-              <div class="col-md-4">
-                <input id="username" name="username" type="text" placeholder="" class="form-control input-md">
+        <section>
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col-md-6 order-2">
+                <div class="p-5">
+                  <img class="img-fluid rounded-circle" src="https://unsplash.it/500/500?image=453" alt="">
+                </div>
+              </div>
+              <div class="col-md-6 order-1">
+                <div class="p-5">
+                  <h2 class="display-4">Let there be rock!</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
+                </div>
               </div>
             </div>
+          </div>
+        </section>
 
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="bikeStyle">Bike Style</label>
-              <div class="col-md-4">
-                <input id="bikeStyle" name="bikeStyle" type="text" placeholder="" class="form-control input-md">
-              </div>
-            </div>
-
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="age">Age</label>
-              <div class="col-md-4">
-                <input id="age" name="age" type="number" placeholder="" class="form-control input-md">
-              </div>
-            </div>
-
-          </fieldset>
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" id="saveUser">Save Rider</button>
-        </div>
-      </div>
-      <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-  </div>
-  <!-- /.modal -->
-</div>
-
-
-<!-- Modal for ROUTES -->
-<div class="container">
-  <!--FORM to add user modal-->
-  <!-- begin userModal: this is not visible until you call .modal() on it -->
-  <div class="modal fade" tabindex="-1" role="dialog" id="routerModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Add New Route</h4>
-        </div>
-        <div class="modal-body">
-
-          <fieldset class='form-horizontal'>
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="firstName">First Name</label>
-              <div class="col-md-4">
-                <input id="firstName" name="firstName" type="text" placeholder="" class="form-control input-md" required="">
-              </div>
-            </div>
-
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="lastName">Last Name</label>
-              <div class="col-md-4">
-                <input id="lastName" name="lastName" type="text" placeholder="" class="form-control input-md">
-              </div>
-            </div>
-
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="username">Username</label>
-              <div class="col-md-4">
-                <input id="username" name="username" type="text" placeholder="" class="form-control input-md">
-              </div>
-            </div>
-
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="bikeStyle">Bike Style</label>
-              <div class="col-md-4">
-                <input id="bikeStyle" name="bikeStyle" type="text" placeholder="" class="form-control input-md">
-              </div>
-            </div>
-
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="age">Age</label>
-              <div class="col-md-4">
-                <input id="age" name="age" type="number" placeholder="" class="form-control input-md">
-              </div>
-            </div>
-
-          </fieldset>
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" id="saveUser">Save User</button>
-        </div>
-      </div>
-      <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-  </div>
-  <!-- /.modal -->
-</div>
-
-
-<div class="container" id="user-update-modal"></div>
-<div class="container" id="user-delete-modal"></div>
-
+        <!-- Footer -->
+        <footer class="py-5 bg-dark">
+          <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
+          </div>
+          <!-- /.container -->
+        </footer>
 
   </body>
 </html>
