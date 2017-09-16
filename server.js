@@ -10,6 +10,9 @@ const controllers = require("./controllers");
 const db = require("./models");
 const User = db.User;
 
+// set view engine to hbs (handlebars)
+app.set("view engine", "hbs");
+
 app.use(express.static("public"));
 app.use(express.static("views"));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -44,7 +47,7 @@ passport.deserializeUser(User.deserializeUser());
 //   res.sendFile("/index.html", { root: __dirname });
 // });
 app.get("/", function(req, res) {
-  res.render("/index.html", { user: JSON.stingify(req.user) + " || null" });
+  res.render("index", { user: JSON.stringify(req.user) + " || null" });
 });
 
 //JSON endpoints
@@ -63,8 +66,9 @@ app.delete("/api/users/:userId", controllers.users.destroy);
 
 // show signup view
 app.get("/signup", function(req, res) {
-  res.render("signup"); // you can also use res.sendFile
+  res.sendFile("/views/sign_up.html"); // you can also use res.sendFile
 });
+
 // hashes and salts password, saves new user to db
 app.post("/signup", function(req, res) {
   User.register(
@@ -72,20 +76,21 @@ app.post("/signup", function(req, res) {
     req.body.password,
     function(err, newUser) {
       passport.authenticate("local")(req, res, function() {
-        res.send("signed up!!!");
+        //res.send("signed up!!!");
+        res.redirect("/");
       });
     }
   );
 });
 // show login view
 app.get("/login", function(req, res) {
-  res.render("login"); // you can also use res.sendFile
+  res.sendFile("views/login.html"); // you can also use res.sendFile
 });
 // log in user
 app.post("/login", passport.authenticate("local"), function(req, res) {
   console.log(req.user);
-  res.send("logged in!!!"); // sanity check
-  // res.redirect('/'); // preferred!
+  //res.send("logged in!!!"); // sanity check
+  res.redirect("/"); // preferred!
 });
 
 //LISTENING
