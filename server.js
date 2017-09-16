@@ -17,23 +17,23 @@ app.get("/", function home(req, res) {
 app.get("/login", function login(req, res) {
   res.sendFile("views/login.html", { root: __dirname });
 });
-app.get("/signUp", function login(req, res) {
-  res.sendFile("views/signUp.html", { root: __dirname });
+app.get("/sign_up", function login(req, res) {
+  res.sendFile("views/sign_up.html", { root: __dirname });
 });
 app.get("/explore", function login(req, res) {
   res.sendFile("views/explore.html", { root: __dirname });
 });
-app.get("/userProfile", function login(req, res) {
-  res.sendFile("views/userProfile.html", { root: __dirname });
+app.get("/user_profile", function login(req, res) {
+  res.sendFile("views/user_profile.html", { root: __dirname });
 });
-app.get("/routeInfo", function login(req, res) {
-  res.sendFile("views/routeInfo.html", { root: __dirname });
+app.get("/route_info", function login(req, res) {
+  res.sendFile("views/route_info.html", { root: __dirname });
 });
 app.get("/about", function login(req, res) {
   res.sendFile("views/about.html", { root: __dirname });
 });
-app.get("/bikingInfo", function login(req, res) {
-  res.sendFile("views/bikingInfo.html", { root: __dirname });
+app.get("/biking_info", function login(req, res) {
+  res.sendFile("views/biking_info.html", { root: __dirname });
 });
 
 //JSON endpoints

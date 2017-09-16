@@ -6,7 +6,7 @@
 
   <!--Stylesheets-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <link rel="stylesheet" href="styles/login.css">
+  <link rel="stylesheet" href="styles/signup.css">
   <link rel="stylesheet" href="styles/styles.css">
 
   <!-- VENDOR SCRIPTS -->
@@ -31,7 +31,7 @@
         <div class="box">
           <div class="content">
             <div class="header">
-              <h2 class="title">Log In!</h2>
+              <h2 class="title">Sign Up!</h2>
             </div>
             <div class="body">
               <hr>
@@ -39,7 +39,7 @@
               <fieldset class='form-horizontal'>
                 <!-- Text input-->
                 <div class="form-group">
-                  <label class="col-md-4 control-label" for="firstName">Username</label>
+                  <label class="col-md-4 control-label" for="firstName">First Name</label>
                   <div class="col-md-4">
                     <input id="firstName" name="firstName" type="text" placeholder="" class="form-control input-md" required="">
                   </div>
@@ -47,9 +47,33 @@
 
                 <!-- Text input-->
                 <div class="form-group">
-                  <label class="col-md-4 control-label" for="lastName">Password</label>
+                  <label class="col-md-4 control-label" for="lastName">Last Name</label>
                   <div class="col-md-4">
                     <input id="lastName" name="lastName" type="text" placeholder="" class="form-control input-md">
+                  </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="username">Username</label>
+                  <div class="col-md-4">
+                    <input id="username" name="username" type="text" placeholder="" class="form-control input-md">
+                  </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="bikeStyle">Bike Style</label>
+                  <div class="col-md-4">
+                    <input id="bikeStyle" name="bikeStyle" type="text" placeholder="" class="form-control input-md">
+                  </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="age">Age</label>
+                  <div class="col-md-4">
+                    <input id="age" name="age" type="number" placeholder="" class="form-control input-md">
                   </div>
                 </div>
 
@@ -57,8 +81,8 @@
 
             </div>
             <div class="footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Home Page</button>
-              <button type="button" class="btn btn-primary" id="saveUser">Log In</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" id="saveUser">Create Account</button>
             </div>
           </div>
         </div>

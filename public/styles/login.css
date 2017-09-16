@@ -1,0 +1,25 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  text-align: center;
+  margin: 0 auto;
+  background-color: black;
+  color: white;
+  background-image: url("http://fungyung.com/data/out/12/63397608-bicycle-wallpapers.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+button {
+  padding: 20px;
+  margin: 20px;
+}
+
+#saveUser {
+  background-color: #5f5f5f;
+}
