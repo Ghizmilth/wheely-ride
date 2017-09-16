@@ -12,7 +12,7 @@ body {
   color: white;
   background-image: url("http://www.magic4walls.com/wp-content/uploads/2015/04/bike-sport-seemed-far-away-mountain-sunset-conquer.jpg");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100%;
 }
 
 button {

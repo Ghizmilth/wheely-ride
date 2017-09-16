@@ -17,10 +17,8 @@ $(document).ready(function() {
     }
   });
 
-  //Add User button CLICKED
-  $(".btn-add-user").on("click", addUserModal);
   //Handle SAVE USER button
-  $("#userModal").on("click", "#saveUser", newUserSubmit);
+  $("#userForm").on("click", "#saveUser", newUserSubmit);
   //Handle UPDATE USER button
   $("#user-render").on("click", ".btn-edit-user", updateUserModal);
   //Sends updated info to server and DB
@@ -36,20 +34,15 @@ function renderRoutes(data) {
   initMap();
 }
 
-//Handles when ADD A NEW USER button has been clicked
-function addUserModal(e) {
-  console.log("Add User Button Clicked");
-  $("#userModal").modal(); //display the ADD USER modal
-}
-
 //Submit the new user to be CREATED
 function newUserSubmit(e) {
   e.preventDefault();
-  var $modal = $("#userModal");
+  var $modal = $("#userForm");
   var $firstNameField = $modal.find("#firstName");
   var $lastNameField = $modal.find("#lastName");
   var $usernameField = $modal.find("#username");
   var $bikeStyleField = $modal.find("#bikeStyle");
+  var $passwordField = $modal.find("#password");
   var $ageField = $modal.find("#age");
 
   var userToPost = {
@@ -57,6 +50,7 @@ function newUserSubmit(e) {
     last_name: $lastNameField.val(),
     username: $usernameField.val(),
     bike_style: $bikeStyleField.val(),
+    password: $passwordField.val(),
     age: $ageField.val()
   };
 
@@ -73,11 +67,22 @@ function newUserSubmit(e) {
     $usernameField.val("");
     $bikeStyleField.val("");
     $ageField.val("");
-  });
+    $passwordField.val("");
 
-  //Hide Modal
-  $("#userModal").modal("hide");
+    //passNewUserData(data);
+  });
 }
+
+// function goToProfile(data) {
+//   location.assign("/user_profile");
+// }
+
+//Passes new user data to be rendered when created Profile
+// function passNewUserData(data) {
+//   console.log("This is the data that will be used for profiles", data);
+//   goToProfile();
+//   $(".user-profile-name").append("Hidaner");
+// }
 
 function editUserSubmit(edit) {
   edit.preventDefault();

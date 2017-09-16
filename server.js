@@ -1,39 +1,50 @@
-const express = require("express"),
-  app = express(),
-  bodyParser = require("body-parser");
+const express = require("express");
+const app = express();
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+const cookieParser = require("cookie-parser");
+const session = require("express-session");
+const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
+const controllers = require("./controllers");
+const db = require("./models");
+const User = db.User;
 
 app.use(express.static("public"));
 app.use(express.static("views"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const controllers = require("./controllers");
+// to config API to use body body-parser and look for JSON in req.body
+app.use(
+  bodyParser.urlencoded({
+    extended: true
+  })
+);
+app.use(bodyParser.json());
 
-//BASIC ROUTE
+// middleware for auth
+app.use(cookieParser());
+app.use(
+  session({
+    secret: "supersecretkey", // change this!
+    resave: false,
+    saveUninitialized: false
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
+// passport config
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+//
 //Index page
-app.get("/", function home(req, res) {
-  res.sendFile("views/index.html", { root: __dirname });
-});
-app.get("/login", function login(req, res) {
-  res.sendFile("views/login.html", { root: __dirname });
-});
-app.get("/sign_up", function login(req, res) {
-  res.sendFile("views/sign_up.html", { root: __dirname });
-});
-app.get("/explore", function login(req, res) {
-  res.sendFile("views/explore.html", { root: __dirname });
-});
-app.get("/user_profile", function login(req, res) {
-  res.sendFile("views/user_profile.html", { root: __dirname });
-});
-app.get("/route_info", function login(req, res) {
-  res.sendFile("views/route_info.html", { root: __dirname });
-});
-app.get("/about", function login(req, res) {
-  res.sendFile("views/about.html", { root: __dirname });
-});
-app.get("/biking_info", function login(req, res) {
-  res.sendFile("views/biking_info.html", { root: __dirname });
+// app.get("/", function home(req, res) {
+//   res.sendFile("/index.html", { root: __dirname });
+// });
+app.get("/", function(req, res) {
+  res.render("/index.html", { user: JSON.stingify(req.user) + " || null" });
 });
 
 //JSON endpoints
@@ -49,6 +60,33 @@ app.put("/api/users/:userId", controllers.users.update);
 app.delete("/api/users/:userId", controllers.users.destroy);
 
 //Routes server-routes
+
+// show signup view
+app.get("/signup", function(req, res) {
+  res.render("signup"); // you can also use res.sendFile
+});
+// hashes and salts password, saves new user to db
+app.post("/signup", function(req, res) {
+  User.register(
+    new User({ username: req.body.username }),
+    req.body.password,
+    function(err, newUser) {
+      passport.authenticate("local")(req, res, function() {
+        res.send("signed up!!!");
+      });
+    }
+  );
+});
+// show login view
+app.get("/login", function(req, res) {
+  res.render("login"); // you can also use res.sendFile
+});
+// log in user
+app.post("/login", passport.authenticate("local"), function(req, res) {
+  console.log(req.user);
+  res.send("logged in!!!"); // sanity check
+  // res.redirect('/'); // preferred!
+});
 
 //LISTENING
 

@@ -26,46 +26,19 @@
 
   <body>
 
-    <div class="container">
-      <div class="user-form" tabindex="-1" role="dialog" id="userForm">
-        <div class="box">
-          <div class="content">
-            <div class="header">
-              <h2 class="title">Log In!</h2>
-            </div>
-            <div class="body">
-              <hr>
-
-              <fieldset class='form-horizontal'>
-                <!-- Text input-->
-                <div class="form-group">
-                  <label class="col-md-4 control-label" for="firstName">Username</label>
-                  <div class="col-md-4">
-                    <input id="firstName" name="firstName" type="text" placeholder="" class="form-control input-md" required="">
-                  </div>
-                </div>
-
-                <!-- Text input-->
-                <div class="form-group">
-                  <label class="col-md-4 control-label" for="lastName">Password</label>
-                  <div class="col-md-4">
-                    <input id="lastName" name="lastName" type="text" placeholder="" class="form-control input-md">
-                  </div>
-                </div>
-
-              </fieldset>
-
-            </div>
-            <div class="footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Home Page</button>
-              <button type="button" class="btn btn-primary" id="saveUser">Log In</button>
-            </div>
-          </div>
-        </div>
+    <h2>Log In</h2>
+    <br>
+    <form method="POST" action="/login">
+      <div class="form-group">
+        <input type="text" name="username" class="form-control" placeholder="Username" autofocus>
       </div>
-    </div>
-
-
+      <div class="form-group">
+        <input type="password" name="password" class="form-control" placeholder="Password">
+      </div>
+      <div class="form-group">
+        <input type="submit" class="btn btn-block btn-primary" value="Log In">
+      </div>
+    </form>
 
 
   </body>
