@@ -3,15 +3,12 @@ const Schema = mongoose.Schema;
 
 let RouteSchema = new Schema({
   route_name: String,
-  start_lat: String,
-  start_lon: String,
-  end_lat: String,
-  end_lon: String,
-  miles: String,
-  climbing_ft: String,
+  start_point: String,
+  end_point: String,
+  waypointOne: String,
+  waypointTwo: String,
   pros: String,
-  cons: String,
-  city: String
+  cons: String
 });
 
 let Route = mongoose.model("Route", RouteSchema);

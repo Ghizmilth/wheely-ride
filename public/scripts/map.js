@@ -1,47 +1,104 @@
+// function initMap() {
+//   console.log("map is initiated");
+//   var directionsDisplay = new google.maps.DirectionsRenderer();
+//   var directionsService = new google.maps.DirectionsService();
+//   var map = new google.maps.Map(document.getElementById("map"), {
+//     zoom: 12,
+//     center: { lat: 37.8054, lng: -122.3401 }
+//   });
+//   directionsDisplay.setMap(map);
+//
+//   calculateAndDisplayRoute(directionsService, directionsDisplay);
+//   document.getElementById("mode").addEventListener("change", function() {
+//     calculateAndDisplayRoute(directionsService, directionsDisplay);
+//   });
+// }
+//
+// function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+//   var selectedMode = document.getElementById("mode").value;
+//   directionsService.route(
+//     {
+//       // origin: { lat: 37.77, lng: -122.447 }, // Haight.
+//       // destination: { lat: 37.768, lng: -122.511 }, // Ocean Beach.
+//       origin: {
+//         lat: parseFloat(start_lat),
+//         lng: parseFloat(start_lon)
+//       }, // Haight.
+//       destination: {
+//         lat: parseFloat(end_lat),
+//         lng: parseFloat(end_lon)
+//       }, // Ocean Beach.
+//
+//       // Note that Javascript allows us to access the constant
+//       // using square brackets and a string value as its
+//       // "property."
+//       travelMode: google.maps.TravelMode[selectedMode]
+//     },
+//     function(response, status) {
+//       if (status == "OK") {
+//         directionsDisplay.setDirections(response);
+//       } else {
+//         window.alert("Directions request failed due to " + status);
+//       }
+//     }
+//   );
+// }
+
 function initMap() {
-  console.log("map is initiated");
-  var directionsDisplay = new google.maps.DirectionsRenderer();
-  var directionsService = new google.maps.DirectionsService();
   var map = new google.maps.Map(document.getElementById("map"), {
     zoom: 12,
-    center: { lat: 37.8054, lng: -122.3401 }
+    center: { lat: 37.8054, lng: -122.3401 } // Bay Area.
   });
-  directionsDisplay.setMap(map);
 
-  calculateAndDisplayRoute(directionsService, directionsDisplay);
-  document.getElementById("mode").addEventListener("change", function() {
-    calculateAndDisplayRoute(directionsService, directionsDisplay);
+  var directionsService = new google.maps.DirectionsService();
+  var directionsDisplay = new google.maps.DirectionsRenderer({
+    draggable: true,
+    map: map,
+    panel: document.getElementById("right-panel")
   });
+
+  directionsDisplay.addListener("directions_changed", function() {
+    computeTotalDistance(directionsDisplay.getDirections());
+  });
+
+  displayRoute(
+    String(start),
+    String(end),
+    directionsService,
+    directionsDisplay
+  );
 }
 
-function calculateAndDisplayRoute(directionsService, directionsDisplay) {
-  var selectedMode = document.getElementById("mode").value;
-  directionsService.route(
+function displayRoute(origin, destination, service, display) {
+  service.route(
     {
-      // origin: { lat: 37.77, lng: -122.447 }, // Haight.
-      // destination: { lat: 37.768, lng: -122.511 }, // Ocean Beach.
-      origin: {
-        lat: parseFloat(start_lat),
-        lng: parseFloat(start_lon)
-      }, // Haight.
-      destination: {
-        lat: parseFloat(end_lat),
-        lng: parseFloat(end_lon)
-      }, // Ocean Beach.
-
-      // Note that Javascript allows us to access the constant
-      // using square brackets and a string value as its
-      // "property."
-      travelMode: google.maps.TravelMode[selectedMode]
+      origin: origin,
+      destination: destination,
+      waypoints: [
+        { location: String(waypointOne) },
+        { location: String(waypointTwo) }
+      ],
+      travelMode: "BICYCLING",
+      avoidTolls: true
     },
     function(response, status) {
-      if (status == "OK") {
-        directionsDisplay.setDirections(response);
+      if (status === "OK") {
+        display.setDirections(response);
       } else {
-        window.alert("Directions request failed due to " + status);
+        alert("Could not display directions due to: " + status);
       }
     }
   );
+}
+
+function computeTotalDistance(result) {
+  var total = 0;
+  var myroute = result.routes[0];
+  for (var i = 0; i < myroute.legs.length; i++) {
+    total += myroute.legs[i].distance.value;
+  }
+  total = total / 1.6 / 1000;
+  document.getElementById("total").innerHTML = total + " miles";
 }
 
 //render map on HTML
@@ -69,17 +126,21 @@ function renderOneMap(route) {
     <p></p>
     <h3 class="my-3"></h3>
     <ul>
-      <li><strong>Miles:</strong> ${route[0].miles} miles</li>
-      <li><strong>Climbing Feet:</strong> ${route[0].climbing_ft} ft.</li>
+      <li><strong>Starting Point:</strong> ${route[0].start_point} ft.</li>
       <li><strong>Pros:</strong> ${route[0].pros}</li>
       <li><strong>Cons:</strong> ${route[0].cons}</li>
     </ul>
   </div>`;
 
-  start_lat = `${route[0].start_lat}`;
-  start_lon = `${route[0].start_lon}`;
-  end_lat = `${route[0].end_lat}`;
-  end_lon = `${route[0].end_lon}`;
+  // start_lat = `${route[0].start_lat}`;
+  // start_lon = `${route[0].start_lon}`;
+  // end_lat = `${route[0].end_lat}`;
+  // end_lon = `${route[0].end_lon}`;
+
+  start = `${route[0].start_point}`;
+  end = `${route[0].end_point}`;
+  waypointOne = `${route[0].waypointOne}`;
+  waypointTwo = `${route[0].waypointTwo}`;
 
   initMap();
 
@@ -96,7 +157,7 @@ function renderRouteList(route) {
       </a>
       <ul>
         <li><strong>Route Name:</stong> ${route.route_name}</li>
-        <li><strong>Route Length:</stong> ${route.miles}</li
+        <li><strong>Start Point:</stong> ${route.start_point}</li
           <hr>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" id="edit-route"><span class="glyphicon glyphicon-pencil" aria-hidden="true" data-route-id="${route._id}"></span></button>
@@ -129,17 +190,22 @@ function openSelectedRoute(route) {
       <p></p>
       <h3 class="my-3"></h3>
       <ul>
-        <li><strong>Miles:</strong> ${route.miles} miles</li>
-        <li><strong>Climbing Feet:</strong> ${route.climbing_ft} ft.</li>
+        <li><strong>Miles:</strong> ${route.waypointOne} miles</li>
+        <li><strong>Climbing Feet:</strong> ${route.waypointTwo} ft.</li>
         <li><strong>Pros:</strong> ${route.pros}</li>
         <li><strong>Cons:</strong> ${route.cons}</li>
       </ul>
     </div>`;
 
-    start_lat = `${route.start_lat}`;
-    start_lon = `${route.start_lon}`;
-    end_lat = `${route.end_lat}`;
-    end_lon = `${route.end_lon}`;
+    // start_lat = `${route.start_lat}`;
+    // start_lon = `${route.start_lon}`;
+    // end_lat = `${route.end_lat}`;
+    // end_lon = `${route.end_lon}`;
+
+    start = `${route.start_point}`;
+    end = `${route.end_point}`;
+    waypointOne = `${route.waypointOne}`;
+    waypointTwo = `${route.waypointTwo}`;
 
     $("#map-box").empty();
     $("#map-content").empty();
@@ -189,7 +255,7 @@ function updateRouteModal(route) {
                   <div class="form-group">
                     <label class="col-md-4 control-label" for="startLat">Start Latitude</label>
                     <div class="col-md-4">
-                      <input id="updatedStartLat" name="start_lat" type="text" placeholder="Starting Latitude" class="form-control input-md" value="${editRoute.start_lat}">
+                      <input id="updatedStartLat" name="start_lat" type="text" placeholder="Starting Latitude" class="form-control input-md" value="${editRoute.start_point}">
                     </div>
                   </div>
 
@@ -197,7 +263,7 @@ function updateRouteModal(route) {
                   <div class="form-group">
                     <label class="col-md-4 control-label" for="startLon">Start Longitude</label>
                     <div class="col-md-4">
-                      <input id="updatedStartLon" name="start_lon" type="text" placeholder="Starting Longitude" class="form-control input-md" value="${editRoute.start_lon}">
+                      <input id="updatedStartLon" name="start_lon" type="text" placeholder="Starting Longitude" class="form-control input-md" value="${editRoute.end_point}">
                     </div>
                   </div>
 
@@ -205,7 +271,7 @@ function updateRouteModal(route) {
                   <div class="form-group">
                     <label class="col-md-4 control-label" for="endLat">End Latitude</label>
                     <div class="col-md-4">
-                      <input id="updatedEndLat" name="end_lat" type="text" placeholder="Ending Latitude" class="form-control input-md" value="${editRoute.end_lat}">
+                      <input id="updatedEndLat" name="end_lat" type="text" placeholder="Ending Latitude" class="form-control input-md" value="${editRoute.waypointOne}">
                     </div>
                   </div>
 
@@ -213,22 +279,7 @@ function updateRouteModal(route) {
                   <div class="form-group">
                     <label class="col-md-4 control-label" for="endLon">End Longitude</label>
                     <div class="col-md-4">
-                      <input id="updatedEndLon" name="end_lon" type="text" placeholder="Ending Longitude" class="form-control input-md" value="${editRoute.end_lon}">
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label class="col-md-4 control-label" for="miles">Miles</label>
-                    <div class="col-md-4">
-                      <input id="updatedMiles" name="length" type="text" placeholder="Length of Ride" class="form-control input-md" required="" value="${editRoute.miles}">
-                    </div>
-                  </div>
-
-                  <!-- Text input-->
-                  <div class="form-group">
-                    <label class="col-md-4 control-label" for="climbingFt">Climbing ft</label>
-                    <div class="col-md-4">
-                      <input id="updatedClimbingFt" name="climbing_ft" type="text" placeholder="Climbing Feet" class="form-control input-md" value="${editRoute.climbing_ft}">
+                      <input id="updatedEndLon" name="end_lon" type="text" placeholder="Ending Longitude" class="form-control input-md" value="${editRoute.waypointTwo}">
                     </div>
                   </div>
 
@@ -248,13 +299,6 @@ function updateRouteModal(route) {
                     </div>
                   </div>
 
-                  <!-- Text input-->
-                  <div class="form-group">
-                    <label class="col-md-4 control-label" for="city">City</label>
-                    <div class="col-md-4">
-                      <input id="updatedCity" name="city-loc" type="text" placeholder="City Location" class="form-control input-md" value="${editRoute.city}">
-                    </div>
-                  </div>
 
                 </fieldset>
 
@@ -288,14 +332,11 @@ function editRouteSubmit(edit) {
   let routeData = {
     route_name: $("#updatedRouteName").val(),
     start_lat: $("#updatedStartLat").val(),
-    start_lon: $("#updatedStartLon").val(),
-    end_lat: $("#updatedEndLat").val(),
-    end_lon: $("#updatedEndLon").val(),
-    miles: $("#updatedMiles").val(),
-    climbing_ft: $("#updatedClimbingFt").val(),
+    end_point: $("#updatedStartLon").val(),
+    waypointOne: $("#updatedEndLat").val(),
+    waypointTwo: $("#updatedEndLon").val(),
     pros: $("#updatedPros").val(),
-    cons: $("#updatedCons").val(),
-    city: $("#updatedCity").val()
+    cons: $("#updatedCons").val()
   };
 
   console.log(

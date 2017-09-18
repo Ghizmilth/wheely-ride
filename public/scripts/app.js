@@ -1,8 +1,14 @@
 //map coordinate cariables
-var start_lat = 37.77,
-  start_lon = -122.447,
-  end_lat = 37.768,
-  end_lon = -122.511;
+// var start_lat = 37.77,
+//   start_lon = -122.447,
+//   end_lat = 37.768,
+//   end_lon = -122.511;
+
+var start = "661 65th St. Oakland, CA",
+  end = "1790 8th St. Oakland, CA";
+
+var waypointOne = "957 63rd St, Oakland, CA",
+  waypointTwo = "5974 Marshall St, Oakland, CA";
 
 $(document).ready(function() {
   console.log("JS is loaded");
@@ -154,27 +160,21 @@ function newRouteSubmit(e) {
   e.preventDefault();
   var $modal = $("#routeForm");
   var $routeNameField = $modal.find("#routeName");
-  var $startLatField = $modal.find("#startLat");
-  var $startLonField = $modal.find("#startLon");
-  var $endLatField = $modal.find("#endLat");
-  var $endLonField = $modal.find("#endLon");
-  var $milesField = $modal.find("#miles");
-  var $climbingFtField = $modal.find("#climbingFt");
+  var $startField = $modal.find("#startLat");
+  var $endField = $modal.find("#startLon");
+  var $wayOneField = $modal.find("#endLat");
+  var $wayTwoField = $modal.find("#endLon");
   var $prosField = $modal.find("#pros");
   var $consField = $modal.find("#cons");
-  var $cityField = $modal.find("#city");
 
   var routeToPost = {
     route_name: $routeNameField.val(),
-    start_lat: $startLatField.val(),
-    start_lon: $startLonField.val(),
-    end_lat: $endLatField.val(),
-    end_lon: $endLonField.val(),
-    miles: $milesField.val(),
-    climbing_ft: $climbingFtField.val(),
+    start_point: $startLatField.val(),
+    end_point: $startLonField.val(),
+    waypointOne: $endLatField.val(),
+    waypointTwo: $endLonField.val(),
     pros: $prosField.val(),
-    cons: $consField.val(),
-    city: $cityField.val()
+    cons: $consField.val()
   };
 
   console.log("route to post", routeToPost);
@@ -190,11 +190,8 @@ function newRouteSubmit(e) {
     $startLonField.val("");
     $endLatField.val("");
     $endLonField.val("");
-    $milesField.val("");
-    $climbingFtField.val("");
     $prosField.val("");
     $consField.val("");
-    $cityField.val("");
 
     $("#routeModal").modal();
   });
