@@ -106,14 +106,10 @@ function renderRouteList(route) {
 function openSelectedRoute(route) {
   let routeId = $(route).data("route-id");
   console.log(routeId);
-  selectedRoute(route);
-}
-
-function selectedRoute(route) {
-  let routeId = $(route).data("route-id");
-  console.log(routeId);
 
   $.get("/api/routes/" + routeId, function(route) {
+    console.log("This is the route to render", route);
+
     var routeTitleHtml = `
     <!-- Page Content -->
        <div class="container map-box">
@@ -140,12 +136,12 @@ function selectedRoute(route) {
     end_lat = `${route.end_lat}`;
     end_lon = `${route.end_lon}`;
 
-    $("#map-title").remove();
-    $("#map-content").remove();
-    $("#other-routes").remove();
+    $("#map-title").empty();
+    $("#map-content").empty();
+    // $("#other-routes").remove();
 
     initMap();
-    renderRouteList();
+    // renderRouteList();
 
     $("#map-title").after(routeTitleHtml);
     $("#map-content").after(routeContentHtml);
