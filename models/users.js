@@ -2,7 +2,7 @@ let mongoose = require("mongoose");
 let Schema = mongoose.Schema;
 let passportLocalMongoose = require("passport-local-mongoose");
 
-let Route = require("./routes");
+//let Route = require("./routes");
 
 let UserSchema = new Schema({
   first_name: String,
@@ -10,8 +10,8 @@ let UserSchema = new Schema({
   username: String,
   password: String,
   bike_style: String,
-  age: Number,
-  routes: [Route.schema]
+  age: Number
+  //routes: [Route.schema]
 });
 
 UserSchema.plugin(passportLocalMongoose);

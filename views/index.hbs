@@ -25,7 +25,7 @@
     <script type="text/javascript" src="/scripts/landingPage.js"></script>
     <script type="text/javascript"> window.user =  {{{ user }}} </script>
 
-    </script>
+    
   </head>
   <body>
 
@@ -45,13 +45,19 @@
                   </a>
                 </li>
                 <li class="nav-item">
+                  <a class="nav-link" href="explore.html">Explore Bike Rides</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="create_route.html">Create a Route</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="biking_info.html">Biking Tips</a>
+                </li>
+                <li class="nav-item">
                   <a class="nav-link" href="login.html">Log In</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="sign_up.html">Sign Up</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Contact</a>
+                  <a class="nav-link" href="login.html">Log In</a>
                 </li>
               </ul>
             </div>
@@ -77,8 +83,8 @@
               </div>
               <div class="col-md-6 order-1">
                 <div class="p-5">
-                  <h2 class="display-4">For those about to rock...</h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
+                  <h2 class="display-4">For those about to rock... {{ user.username }}</h2>
+                  <p>{{ username }} Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
                 </div>
               </div>
             </div>

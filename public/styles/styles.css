@@ -5,3 +5,15 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.modal-text,
+.modal-title {
+  color: black;
+}
+
+button {
+  padding: 20px;
+  margin: 20px;
+  border-color: black;
+  color: white;
+}

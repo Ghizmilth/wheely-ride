@@ -29,8 +29,10 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(
   session({
-    secret: "supersecretkey", // change this!
-    resave: false,
+    secret: "pizzarocks", // change this!
+    cookie: { maxAge: 60000 },
+    rolling: true,
+    resave: true,
     saveUninitialized: false
   })
 );
@@ -63,6 +65,9 @@ app.put("/api/users/:userId", controllers.users.update);
 app.delete("/api/users/:userId", controllers.users.destroy);
 
 //Routes server-routes
+app.get("/api/routes", controllers.routes.index);
+app.get("/api/routes"), controllers.routes.show;
+app.post("/api/routes", controllers.routes.create);
 
 // show signup view
 app.get("/signup", function(req, res) {
@@ -77,7 +82,7 @@ app.post("/signup", function(req, res) {
     function(err, newUser) {
       passport.authenticate("local")(req, res, function() {
         //res.send("signed up!!!");
-        res.redirect("/");
+        res.redirect("/u");
       });
     }
   );

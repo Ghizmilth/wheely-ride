@@ -45,9 +45,9 @@ routesList.push({
 });
 
 //add routes to users
-usersList.forEach(function(user) {
-  user.routes = routesList;
-});
+// usersList.forEach(function(user) {
+//   user.routes = routesList;
+// });
 
 //remove all hardcoded data and add new one
 db.User.remove({}, function(err, users) {
@@ -58,5 +58,16 @@ db.User.remove({}, function(err, users) {
     }
     console.log("all users", users);
     console.log("created", users.length, "users");
+  });
+});
+
+db.Route.remove({}, function(err, routes) {
+  console.log("all data removed");
+  db.Route.create(routesList, function(err, routes) {
+    if (err) {
+      return console.log("ERROR", err);
+    }
+    console.log("all users", routes);
+    console.log("created", routes.length, "routes");
   });
 });
