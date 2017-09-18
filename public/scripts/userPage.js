@@ -74,24 +74,6 @@ function renderOneUser(user) {
   $("#user-render").append(oneUser);
 }
 
-//Render One Route
-// function oneLandmark(landmark) {
-//   return `
-//         <div class="container">
-//           <div class="row">
-//             <div class="col-md-3 col-sx-12 thumbnail landmark-photo" class="landmark-image">
-//               <img src="${route.}">
-//             </div>
-//            <div class="col-md-12" id='style-city'>
-//               <h2>${landmark.name}</h2>
-//               <p>${landmark.address}</p>
-//               <p>${landmark.comments}</P>
-//        </div>
-//       </div>
-//      </div>
-//      <hr>`;
-// }
-
 //**UPDATES USER INFORMATION WHEN UPDATE BUTTON IS CLICKED
 function updateUserModal(user) {
   console.log(user);

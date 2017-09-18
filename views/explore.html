@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Wheely Ride</title>
+
+
+  <!--Stylesheets-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles/index.css">
+  <link rel="stylesheet" href="styles/user_routes.css">
+  <link rel="stylesheet" href="styles/explore.css">
+  <link rel="stylesheet" href="styles/styles.css">
+
+  <!-- VENDOR SCRIPTS -->
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="vendor/popper.min.js"></script>
+  <link href="styles/bootstrap.min.css" rel="stylesheet">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmK3eWCI9R6rI31fLCARImWUV2xqd5gWM&callback=initMap">
+  </script>
+  <!--Aplication scripts -->
+
+  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/userPage.js"></script>
+  <script type="text/javascript" src="/scripts/map.js"></script>
+
+
+
+</head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Wheely Ride</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="explore.html">Explore Bike Rides</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="create_route.html">Create a Route</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="biking_info.html">Biking Tips</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="login.html">Log In</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="login.html">Log In</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+        <div id="floating-panel">
+            <b>Mode of Travel: </b>
+            <select id="mode">
+              <!-- <option value="DRIVING">Driving</option> -->
+              <!-- <option value="WALKING">Walking</option> -->
+              <option value="BICYCLING">Bicycling</option>
+              <!-- <option value="TRANSIT">Transit</option> -->
+            </select>
+        </div>
+
+       <div id="map-title"></div>
+
+         <!-- Portfolio Item Row -->
+         <div class="row">
+
+           <div class="col-md-8">
+             <div id="map"></div>
+           </div>
+
+
+           <div id="map-content"></div>
+
+         </div>
+         <!-- /.row -->
+
+         <!-- Related Projects Row -->
+         <h3 class="my-4">Other Routes</h3>
+
+
+         <div class="row" id="other-routes"></div>
+
+
+
+         </div>
+         <!-- /.row -->
+
+       </div>
+       <!-- /.container -->
+
+
+
+
+
+
+
+        <!-- Render Map -->
+        <div id="renderRouteName"></div>
+
+        <div id="map"></div>
+
+        <div id="routeInfo"></div>
+
+        <div class="container" id="route-update-modal"></div>
+
+  </body>
+</html>

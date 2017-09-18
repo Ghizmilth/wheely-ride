@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+
+  <!--Stylesheets-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles/signup.css">
+  <link rel="stylesheet" href="styles/styles.css">
+
+  <!-- VENDOR SCRIPTS -->
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  <!--Aplication scripts -->
+
+  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/userPage.js"></script>
+  <script type="text/javascript" src="/scripts/map.js"></script>
+
+
+
+</head>
+
+  <body>
+<div class="container">
+      <div class="user-form" tabindex="-1" role="dialog" id="routeForm">
+        <div class="box">
+          <div class="content">
+            <div class="header">
+              <h2 class="title">Create New Route!</h2>
+            </div>
+
+            <form  method="POST" action="/api/users">
+
+            <div class="body">
+              <hr>
+
+                <fieldset class='form-horizontal'>
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="firstName"></label>
+                  <div class="col-md-4">
+                    <input id="routeName" name="route_name" type="text" placeholder="Route Name" class="form-control input-md" required="">
+                  </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="lastName"></label>
+                  <div class="col-md-4">
+                    <input id="startLat" name="start_lat" type="text" placeholder="Starting Latitude" class="form-control input-md">
+                  </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="username"></label>
+                  <div class="col-md-4">
+                    <input id="startLon" name="start_lon" type="text" placeholder="Starting Longitude" class="form-control input-md">
+                  </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="bikeStyle"></label>
+                  <div class="col-md-4">
+                    <input id="endLat" name="end_lat" type="text" placeholder="Ending Latitude" class="form-control input-md">
+                  </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="age"></label>
+                  <div class="col-md-4">
+                    <input id="endLon" name="end_lon" type="text" placeholder="Ending Longitude" class="form-control input-md">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="firstName"></label>
+                  <div class="col-md-4">
+                    <input id="miles" name="length" type="text" placeholder="Length of Ride" class="form-control input-md" required="">
+                  </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="lastName"></label>
+                  <div class="col-md-4">
+                    <input id="climbingFt" name="climbing_ft" type="text" placeholder="Climbing Feet" class="form-control input-md">
+                  </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="username"></label>
+                  <div class="col-md-4">
+                    <input id="pros" name="likes" type="text" placeholder="Route Pros" class="form-control input-md">
+                  </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="bikeStyle"></label>
+                  <div class="col-md-4">
+                    <input id="cons" name="dislikes" type="text" placeholder="Route Cons" class="form-control input-md">
+                  </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="age"></label>
+                  <div class="col-md-4">
+                    <input id="city" name="city-loc" type="text" placeholder="City Location" class="form-control input-md">
+                  </div>
+                </div>
+              </fieldset>
+
+            </div>
+            <div class="footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal" id="home-button"><a href="/" >Home</a></button>
+              <button type="submit" class="btn btn-primary" id="saveRoute" value="Sign Up">Create Route</button>
+            </div>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Modal for ROUTES -->
+    <div class="container">
+      <!--FORM to add user modal-->
+      <!-- begin userModal: this is not visible until you call .modal() on it -->
+      <div class="modal fade" tabindex="-1" role="dialog" id="routeModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">Route Created!</h4>
+            </div>
+            <div class="modal-body">
+
+              <fieldset class='form-horizontal'>
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for=""></label>
+                  <div class="col-md-4">
+                    <p class="modal-text">Successfully created a new route, click below to explore this and many more!</p>
+                  </div>
+                </div>
+              </fieldset>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Home Page</button>
+              <button type="button" class="btn btn-primary" id="goToRoutes"><a href="explore.html">Explore Routes</a></button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
+    </div>
+
+
+
+  </body>
+</html>

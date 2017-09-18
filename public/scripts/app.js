@@ -10,17 +10,17 @@ $(document).ready(function() {
   //AJAX call to show routes - allows to show routes on main page
   $.ajax({
     method: "GET",
-    url: "/api/users",
+    url: "/api/routes",
     success: function(data) {
-      renderOneUser(data);
-      //renderRoutes(data);
+      //renderOneUser(data);
+      renderExplore(data);
     }
   });
 
-  //Add User button CLICKED
-  $(".btn-add-user").on("click", addUserModal);
+  // //Handle SAVE USER button
+  $("#saveRoute").on("click", newRouteSubmit);
   //Handle SAVE USER button
-  $("#userModal").on("click", "#saveUser", newUserSubmit);
+  $("#saveUser").on("click", newUserSubmit);
   //Handle UPDATE USER button
   $("#user-render").on("click", ".btn-edit-user", updateUserModal);
   //Sends updated info to server and DB
@@ -29,34 +29,28 @@ $(document).ready(function() {
   $("#user-render").on("click", ".btn-delete-user", deleteUserModal);
   //Sends Request to delete user from DB
   $("#user-delete-modal").on("click", "#deleteUser", deleteUserSubmit);
+  // //When clicking on Saved Route Modal, render maps on Explore.html
+  // $("#routeModal").on("click", "#goToRoutes", renderRoutes);
+  $("#other-routes").on("click", "#edit-route", updateRouteModal);
 });
-
-//render map on HTML
-function renderRoutes(data) {
-  initMap();
-}
-
-//Handles when ADD A NEW USER button has been clicked
-function addUserModal(e) {
-  console.log("Add User Button Clicked");
-  $("#userModal").modal(); //display the ADD USER modal
-}
 
 //Submit the new user to be CREATED
 function newUserSubmit(e) {
   e.preventDefault();
-  var $modal = $("#userModal");
+  var $modal = $("#userForm");
   var $firstNameField = $modal.find("#firstName");
   var $lastNameField = $modal.find("#lastName");
-  var $usernameField = $modal.find("#username");
+  // var $usernameField = $modal.find("#username");
   var $bikeStyleField = $modal.find("#bikeStyle");
+  // var $passwordField = $modal.find("#password");
   var $ageField = $modal.find("#age");
 
   var userToPost = {
     first_name: $firstNameField.val(),
     last_name: $lastNameField.val(),
-    username: $usernameField.val(),
+    // username: $usernameField.val(),
     bike_style: $bikeStyleField.val(),
+    // password: $passwordField.val(),
     age: $ageField.val()
   };
 
@@ -73,10 +67,8 @@ function newUserSubmit(e) {
     $usernameField.val("");
     $bikeStyleField.val("");
     $ageField.val("");
+    $passwordField.val("");
   });
-
-  //Hide Modal
-  $("#userModal").modal("hide");
 }
 
 function editUserSubmit(edit) {
@@ -151,6 +143,62 @@ function handleDeleteUserResponse(data) {
 
   renderOneUser();
 }
+
+//Creates a new ROUTE on DATABASE
+function newRouteSubmit(e) {
+  e.preventDefault();
+  var $modal = $("#routeForm");
+  var $routeNameField = $modal.find("#routeName");
+  var $startLatField = $modal.find("#startLat");
+  var $startLonField = $modal.find("#startLon");
+  var $endLatField = $modal.find("#endLat");
+  var $endLonField = $modal.find("#endLon");
+  var $milesField = $modal.find("#miles");
+  var $climbingFtField = $modal.find("#climbingFt");
+  var $prosField = $modal.find("#pros");
+  var $consField = $modal.find("#cons");
+  var $cityField = $modal.find("#city");
+
+  var routeToPost = {
+    route_name: $routeNameField.val(),
+    start_lat: $startLatField.val(),
+    start_lon: $startLonField.val(),
+    end_lat: $endLatField.val(),
+    end_lon: $endLonField.val(),
+    miles: $milesField.val(),
+    climbing_ft: $climbingFtField.val(),
+    pros: $prosField.val(),
+    cons: $consField.val(),
+    city: $cityField.val()
+  };
+
+  console.log("route to post", routeToPost);
+
+  var routePostToServer = "/api/routes";
+
+  $.post(routePostToServer, routeToPost, function(data) {
+    console.log("Received data from post to /routes", data);
+
+    //Clear form
+    $routeNameField.val("");
+    $startLatField.val("");
+    $startLonField.val("");
+    $endLatField.val("");
+    $endLonField.val("");
+    $milesField.val("");
+    $climbingFtField.val("");
+    $prosField.val("");
+    $consField.val("");
+    $cityField.val("");
+
+    $("#routeModal").modal();
+  });
+}
+
+// function renderRoutes(route) {
+//   console.log("render routes has been called");
+//   renderExplore(route);
+// }
 
 //CLEAR THE DOM
 function clearDom() {

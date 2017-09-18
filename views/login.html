@@ -1,47 +1,45 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
+<head>
+  <meta charset="utf-8">
+  <title></title>
 
-    <!--Stylesheets-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles/styles.css">
+  <!--Stylesheets-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles/login.css">
+  <link rel="stylesheet" href="styles/styles.css">
 
-    <!-- VENDOR SCRIPTS -->
+  <!-- VENDOR SCRIPTS -->
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmK3eWCI9R6rI31fLCARImWUV2xqd5gWM&callback=initMap">
-    </script>
-    <!--Aplication scripts -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-    <script type="text/javascript" src="/scripts/app.js"></script>
-    <script type="text/javascript" src="/scripts/map.js"></script>
-    <script type="text/javascript" src="/scripts/landingPage.js"></script>
-    <script type="text/javascript" src="/scripts/userPage.js"></script>
+  <!--Aplication scripts -->
 
-  </head>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/userPage.js"></script>
+  <script type="text/javascript" src="/scripts/map.js"></script>
+
+
+
+</head>
+
   <body>
 
+    <h2>Log In</h2>
+    <br>
+    <form method="POST" action="/login">
+      <div class="form-group">
+        <input type="text" name="username" class="form-control" placeholder="Username" autofocus>
+      </div>
+      <div class="form-group">
+        <input type="password" name="password" class="form-control" placeholder="Password">
+      </div>
+      <div class="form-group">
+        <input type="submit" class="btn btn-block btn-primary" value="Log In">
+      </div>
+    </form>
 
-
-    This is a new page from the previous button
-
-
-        <div id="floating-panel">
-            <b>Mode of Travel: </b>
-            <select id="mode">
-              <!-- <option value="DRIVING">Driving</option> -->
-              <!-- <option value="WALKING">Walking</option> -->
-              <option value="BICYCLING">Bicycling</option>
-              <!-- <option value="TRANSIT">Transit</option> -->
-            </select>
-        </div>
-
-        <!-- Render Map -->
-        <div id="map"></div>
 
   </body>
 </html>
