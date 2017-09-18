@@ -66,7 +66,7 @@ app.delete("/api/users/:userId", controllers.users.destroy);
 
 //Routes server-routes
 app.get("/api/routes", controllers.routes.index);
-app.get("/api/routes"), controllers.routes.show;
+app.get("/api/routes/:routeId"), controllers.routes.show;
 app.post("/api/routes", controllers.routes.create);
 
 // show signup view

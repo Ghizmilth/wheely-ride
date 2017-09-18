@@ -11,7 +11,7 @@ function index(req, res) {
 
 //GET user by ID - api/users/:userId
 function show(req, res) {
-  db.Route.findById(req.params.userId, function(err, foundRoute) {
+  db.Route.findById(req.params.routeId, function(err, foundRoute) {
     if (err) {
       console.log("routesControllers.show error", err);
     }
