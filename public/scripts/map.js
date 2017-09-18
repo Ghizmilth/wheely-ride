@@ -64,7 +64,7 @@ function renderOneMap(route) {
          <small></small>
        </h1>`;
 
-  var routeContentHtml = `<div class="col-md-4">
+  var routeContentHtml = `<div class="col-md-4 mapContent">
     <h3 class="my-3">Route Info</h3>
     <p></p>
     <h3 class="my-3"></h3>
@@ -119,7 +119,7 @@ function openSelectedRoute(route) {
            <small></small>
          </h1>`;
 
-    var routeContentHtml = `<div class="col-md-4">
+    var routeContentHtml = `<div class="col-md-4 mapContent">
       <h3 class="my-3">Route Info</h3>
       <p></p>
       <h3 class="my-3"></h3>
@@ -136,14 +136,17 @@ function openSelectedRoute(route) {
     end_lat = `${route.end_lat}`;
     end_lon = `${route.end_lon}`;
 
-    $("#map-title").empty();
+    $("#map-box").empty();
     $("#map-content").empty();
+    $(".map-box").empty();
+    $(".mapContent").empty();
+    $("#map-title").empty();
     // $("#other-routes").remove();
 
     initMap();
     // renderRouteList();
 
-    $("#map-title").after(routeTitleHtml);
-    $("#map-content").after(routeContentHtml);
+    $("#map-title").append(routeTitleHtml);
+    $("#map-content").append(routeContentHtml);
   });
 }
