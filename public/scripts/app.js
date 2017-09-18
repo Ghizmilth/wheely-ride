@@ -31,7 +31,7 @@ $(document).ready(function() {
   $("#user-delete-modal").on("click", "#deleteUser", deleteUserSubmit);
   // //When clicking on Saved Route Modal, render maps on Explore.html
   // $("#routeModal").on("click", "#goToRoutes", renderRoutes);
-  // $("#other-routes").on("click", ".open-route", openSelectedRoute);
+  $("#other-routes").on("click", "#edit-route", updateRouteModal);
 });
 
 //Submit the new user to be CREATED

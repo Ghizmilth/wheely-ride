@@ -20,6 +20,7 @@ button {
   border-color: black;
 }
 
-#login {
+#login,
+#goToRoutes {
   background-color: #5f5f5f;
 }
