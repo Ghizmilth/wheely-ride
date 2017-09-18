@@ -29,9 +29,14 @@ $(document).ready(function() {
   $("#user-render").on("click", ".btn-delete-user", deleteUserModal);
   //Sends Request to delete user from DB
   $("#user-delete-modal").on("click", "#deleteUser", deleteUserSubmit);
-  // //When clicking on Saved Route Modal, render maps on Explore.html
-  // $("#routeModal").on("click", "#goToRoutes", renderRoutes);
+  //When EDIT route is clicked, open MODAL
   $("#other-routes").on("click", "#edit-route", updateRouteModal);
+  //Handle Save Button for Edited Route
+  $("#route-update-modal").on("click", "#updateRoute", editRouteSubmit);
+  //Handle Delete Route button
+  $("#other-routes").on("click", "#delete-route", deleteRouteModal);
+  //Handle DELETE confirmation button from DELETE modal
+  $("#route-delete-modal").on("click", "#deleteRoute", deleteRouteSubmit);
 });
 
 //Submit the new user to be CREATED
@@ -195,10 +200,23 @@ function newRouteSubmit(e) {
   });
 }
 
-// function renderRoutes(route) {
-//   console.log("render routes has been called");
-//   renderExplore(route);
-// }
+//When DELETE USER button is clicked
+function deleteRouteSubmit(data) {
+  console.log("deletion loads until here");
+  data.preventDefault();
+  let routeId = $(this)
+    .parents("#routeDeleteModal")
+    .data("route-id");
+  console.log("This route is going to be deleted", routeId);
+
+  $("#routeDeleteModal").modal("hide");
+
+  $.ajax({
+    url: "/api/routes/" + routeId,
+    method: "DELETE",
+    success: location.reload()
+  });
+}
 
 //CLEAR THE DOM
 function clearDom() {
