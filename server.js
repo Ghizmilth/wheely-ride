@@ -68,6 +68,8 @@ app.delete("/api/users/:userId", controllers.users.destroy);
 app.get("/api/routes", controllers.routes.index);
 app.get("/api/routes/:routeId", controllers.routes.show);
 app.post("/api/routes", controllers.routes.create);
+app.put("/api/routes/:routeId", controllers.routes.update);
+app.delete("/api/routes/:routeId", controllers.routes.destroy);
 
 // show signup view
 app.get("/signup", function(req, res) {
