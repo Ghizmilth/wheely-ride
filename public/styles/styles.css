@@ -21,3 +21,21 @@ button {
 a {
   text-decoration: none;
 }
+
+#navbar-brand {
+  text-size: 2.5vw;
+}
+
+.business-header {
+  height: 50vh;
+  min-height: 300px;
+  background: url("/images/user_profile.jpg") center center no-repeat scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+.card {
+  height: 100%;
+}

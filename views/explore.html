@@ -34,31 +34,25 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="#">Wheely Ride</a>
+        <a class="navbar-brand" href="/"><h1>Wheely Ride</h1></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="">Home
+              <a class="nav-link" href="/">Home
                 <span class="sr-only">(current)</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="explore.html">Explore Bike Rides</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="create_route.html">Create a Route</a>
-            </li>
-            <li class="nav-item">
+           <li class="nav-item">
               <a class="nav-link" href="biking_info.html">Biking Tips</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="login.html">Log In</a>
+              <a class="nav-link" href="create_route.html">Share a Ride</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="login.html">Log In</a>
+              <a class="nav-link" href="about.html">About</a>
             </li>
           </ul>
         </div>
@@ -66,65 +60,51 @@
     </nav>
 
 
-        <div id="floating-panel">
-            <b>Mode of Travel: </b>
-            <select id="mode">
-              <!-- <option value="DRIVING">Driving</option> -->
-              <!-- <option value="WALKING">Walking</option> -->
-              <option value="BICYCLING">Bicycling</option>
-              <!-- <option value="TRANSIT">Transit</option> -->
-            </select>
-        </div>
+
 
        <div id="map-title"></div>
 
-         <!-- Portfolio Item Row -->
+         <!-- MAp Item Row -->
          <div class="row">
-
            <div class="col-md-8">
              <div id="map"></div>
+             <div>
+               <h3><strong>Total Distance:</strong> <span id="total"></span></h3>
+             </div>
            </div>
-
 
            <div id="map-content"></div>
 
          </div>
          <!-- /.row -->
 
-         <!-- Related Projects Row -->
-         <h3 class="my-4">Other Routes</h3>
 
-
+         <!-- Add route button -->
+         <div class="modal-footer" id="add-new-route">
+           <h2>Share Your Route</h2>
+           <a href="create_route.html"><button type="button" class="btn btn-primary" id="add-route"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></a>
+         </div>
          <div class="row" id="other-routes"></div>
-
-
-
          </div>
          <!-- /.row -->
-
        </div>
        <!-- /.container -->
 
-
-
-
-
-
-
-        <!-- Render Map Name -->
-        <div id="renderRouteName"></div>
-
-        <!-- Renders map -->
-        <div id="map"></div>
-
-        <!-- Renders Route Detail Info -->
-        <div id="routeInfo"></div>
 
         <!-- Shows UPDATE route model -->
         <div class="container" id="route-update-modal"></div>
 
         <!-- Shows DELETE route modal -->
         <div class="container" id="route-delete-modal"></div>
+
+
+        <!-- Footer -->
+        <footer class="py-5 bg-dark">
+          <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; Hidaner Ferrer 2017</p>
+          </div>
+          <!-- /.container -->
+        </footer>
 
   </body>
 </html>

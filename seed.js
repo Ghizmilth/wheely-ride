@@ -20,28 +20,22 @@ var routesList = [];
 
 routesList.push({
   route_name: "Orinda Loop",
-  start_lat: "37.856141",
-  start_lon: "-122.259725",
-  end_lat: "37.878799",
-  end_lon: "-122.181606",
-  miles: "18",
-  climbing_ft: "2,450",
-  pros: "Great pavement and scenery",
-  cons: "Could be dangerous with some cars going fast",
-  city: "Oakland to Orinda"
+  start_point: "661 65th St. Oakland, CA",
+  end_point: "661 65th St. Oakland, CA",
+  waypointOne: "St. Marys Gardens. Moraga, CA",
+  waypointTwo: "2 Orinda Theatre Square. Orinda, CA",
+  pros: "Great scenery",
+  cons: "Dangerous with some cars going fast"
 });
 
 routesList.push({
-  route_name: "Orinda Round",
-  start_lat: "37.8061",
-  start_lon: "-122.2595",
-  end_lat: "37.8787",
-  end_lon: "-122.181606",
-  miles: "20",
-  climbing_ft: "2,200",
-  pros: "Great scenery",
-  cons: "Dangerous with some cars going fast",
-  city: "Berkeley to Orinda"
+  route_name: "Jim and Ray's",
+  start_point: "661 65th St. Oakland, CA",
+  end_point: "1790 8th St. Oakland, CA",
+  waypointOne: "957 63rd St. Oakland, CA",
+  waypointTwo: "5974 Marshall St. Oakland, CA",
+  pros: "Good times with friends",
+  cons: "Risk of getting drunk out their house"
 });
 
 //add routes to users
