@@ -1,13 +1,6 @@
-//map coordinate cariables
-// var start_lat = 37.77,
-//   start_lon = -122.447,
-//   end_lat = 37.768,
-//   end_lon = -122.511;
-
 var start = "661 65th St. Oakland, CA",
-  end = "1790 8th St. Oakland, CA";
-
-var waypointOne = "957 63rd St, Oakland, CA",
+  end = "1790 8th St. Oakland, CA",
+  waypointOne = "957 63rd St, Oakland, CA",
   waypointTwo = "5974 Marshall St, Oakland, CA";
 
 $(document).ready(function() {
@@ -160,10 +153,10 @@ function newRouteSubmit(e) {
   e.preventDefault();
   var $modal = $("#routeForm");
   var $routeNameField = $modal.find("#routeName");
-  var $startField = $modal.find("#startLat");
-  var $endField = $modal.find("#startLon");
-  var $wayOneField = $modal.find("#endLat");
-  var $wayTwoField = $modal.find("#endLon");
+  var $startLatField = $modal.find("#startLat");
+  var $startLonField = $modal.find("#startLon");
+  var $endLatField = $modal.find("#endLat");
+  var $endLonField = $modal.find("#endLon");
   var $prosField = $modal.find("#pros");
   var $consField = $modal.find("#cons");
 

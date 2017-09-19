@@ -247,39 +247,39 @@ function updateRouteModal(route) {
                   <div class="form-group">
                     <label class="col-md-4 control-label" for="routeName">Route Name</label>
                     <div class="col-md-4">
-                      <input id="updatedRouteName" name="route_name" type="text" placeholder="Route Name" class="form-control input-md" required="" value="${editRoute.route_name}">
+                      <input id="updatedRouteName" name="route_name" type="text" placeholder="Route Name" class="form-control input-md" value="${editRoute.route_name}">
                     </div>
                   </div>
 
                   <!-- Text input-->
                   <div class="form-group">
-                    <label class="col-md-4 control-label" for="startLat">Start Latitude</label>
+                    <label class="col-md-4 control-label" for="startLat">Start Point</label>
                     <div class="col-md-4">
-                      <input id="updatedStartLat" name="start_lat" type="text" placeholder="Starting Latitude" class="form-control input-md" value="${editRoute.start_point}">
+                      <input id="updatedStartPoint" name="start_lat" type="text" placeholder="Starting Latitude" class="form-control input-md" value="${editRoute.start_point}">
                     </div>
                   </div>
 
                   <!-- Text input-->
                   <div class="form-group">
-                    <label class="col-md-4 control-label" for="startLon">Start Longitude</label>
+                    <label class="col-md-4 control-label" for="startLon">End Point</label>
                     <div class="col-md-4">
-                      <input id="updatedStartLon" name="start_lon" type="text" placeholder="Starting Longitude" class="form-control input-md" value="${editRoute.end_point}">
+                      <input id="updatedEndPoint" name="start_lon" type="text" placeholder="Starting Longitude" class="form-control input-md" value="${editRoute.end_point}">
                     </div>
                   </div>
 
                   <!-- Text input-->
                   <div class="form-group">
-                    <label class="col-md-4 control-label" for="endLat">End Latitude</label>
+                    <label class="col-md-4 control-label" for="endLat">Waypoint One</label>
                     <div class="col-md-4">
-                      <input id="updatedEndLat" name="end_lat" type="text" placeholder="Ending Latitude" class="form-control input-md" value="${editRoute.waypointOne}">
+                      <input id="updatedWayOne" name="end_lat" type="text" placeholder="Ending Latitude" class="form-control input-md" value="${editRoute.waypointOne}">
                     </div>
                   </div>
 
                   <!-- Text input-->
                   <div class="form-group">
-                    <label class="col-md-4 control-label" for="endLon">End Longitude</label>
+                    <label class="col-md-4 control-label" for="endLon">Waypoint Two</label>
                     <div class="col-md-4">
-                      <input id="updatedEndLon" name="end_lon" type="text" placeholder="Ending Longitude" class="form-control input-md" value="${editRoute.waypointTwo}">
+                      <input id="updatedWayTwo" name="end_lon" type="text" placeholder="Ending Longitude" class="form-control input-md" value="${editRoute.waypointTwo}">
                     </div>
                   </div>
 
@@ -331,10 +331,10 @@ function editRouteSubmit(edit) {
 
   let routeData = {
     route_name: $("#updatedRouteName").val(),
-    start_lat: $("#updatedStartLat").val(),
-    end_point: $("#updatedStartLon").val(),
-    waypointOne: $("#updatedEndLat").val(),
-    waypointTwo: $("#updatedEndLon").val(),
+    start_point: $("#updatedStartPoint").val(),
+    end_point: $("#updatedEndPoint").val(),
+    waypointOne: $("#updatedWayOne").val(),
+    waypointTwo: $("#updatedWayTwo").val(),
     pros: $("#updatedPros").val(),
     cons: $("#updatedCons").val()
   };

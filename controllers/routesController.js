@@ -39,16 +39,13 @@ function update(req, res) {
       console.log("routeControllers.update ERROR", err);
     }
 
-    foundRoute.route_name = req.body.routeName;
-    foundRoute.start_lat = req.body.startLat;
-    foundRoute.start_lon = req.body.startLon;
-    foundRoute.end_lat = req.body.endLat;
-    foundRoute.end_lon = req.body.endLon;
-    foundRoute.miles = req.body.miles;
-    foundRoute.climbing_ft = req.body.climbingFt;
+    foundRoute.route_name = req.body.route_name;
+    foundRoute.start_point = req.body.start_point;
+    foundRoute.end_point = req.body.end_point;
+    foundRoute.waypointOne = req.body.waypointOne;
+    foundRoute.waypointTwo = req.body.waypointTwo;
     foundRoute.pros = req.body.pros;
     foundRoute.cons = req.body.cons;
-    foundRoute.city = req.body.city;
 
     foundRoute.save(function(err, savedRoute) {
       if (err) {
