@@ -19,9 +19,13 @@ This is a Bike Riding app that allows people to explore interesting bike rides a
 
 ### Installation steps
 
-- Fork this repo and clone to your computer using ```git clone 
+- Open ```terminal``` in your computer
+- Fork this repo and clone to your prefered working directory by using ```git clone https://github.com/Ghizmilth/wheely-ride.git```
 - use ```npm init``` to initiate your app
-- Then install 
+- Then install packages ```npm install --save express mongoose bower bootstrap cookie parser body-parser```
+- To run your app, ```mongod``` and ```node server.js```
+- Go to your browser and open ```http://localhost:3000/```
+-
 
 ### User Stories
 
@@ -36,32 +40,29 @@ This is a Bike Riding app that allows people to explore interesting bike rides a
 
 ### Wireframes:
 
-[Home Page](https://i.imgur.com/VEXjiq0.png)
-[Explore Routes](https://i.imgur.com/u2ifJa5.png)
-[Create Route](https://i.imgur.com/XRoFDPJ.png)
-[Biking Info](https://i.imgur.com/94NU7LI.png)
-[About Page](https://i.imgur.com/qPtCZyX.png)
+- [Home Page](https://i.imgur.com/VEXjiq0.png)
+- [Explore Routes](https://i.imgur.com/u2ifJa5.png)
+- [Create Route](https://i.imgur.com/XRoFDPJ.png)
+- [Biking Info](https://i.imgur.com/94NU7LI.png)
+- [About Page](https://i.imgur.com/qPtCZyX.png)
 
 ### Data Models:
 
 [Data Model](https://i.imgur.com/d0GGSTs.png)
 
-### Unsolved problems - Future Features
+### Unsolved problems
 
-###### Part 1:
--create the main HTML viwes of every page included on the site
--Include static informaiton about each of the elements included on pages
--create a view of maps on rails on main route page
+- Auth using passport is not completed, part of its dependencies are intalled and it only worked for the main page 
+  that it was installed on.
+- Sessions would not keep opened after switching to another page
+- Handlebars or other EJS file system is required to keep an active session using Passport
 
-###### Part 2:
--create a user on the app
--allow user to add a route using maps
--show the route in the page of interest
--Add Auth to the page
-
-###### Part 3:
--Add maps markers to the main map as more routes are added
--Allow registered users to post next time they will ride so other registered users can join
+### Future Features
+- Add an user account
+- Add map altitude feature
+- Add map GPS tracking
+- Usability on an Phone App
+- Share time and date of rides from registered users to registered users
 
 
 
