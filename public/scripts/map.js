@@ -1,49 +1,4 @@
-// function initMap() {
-//   console.log("map is initiated");
-//   var directionsDisplay = new google.maps.DirectionsRenderer();
-//   var directionsService = new google.maps.DirectionsService();
-//   var map = new google.maps.Map(document.getElementById("map"), {
-//     zoom: 12,
-//     center: { lat: 37.8054, lng: -122.3401 }
-//   });
-//   directionsDisplay.setMap(map);
-//
-//   calculateAndDisplayRoute(directionsService, directionsDisplay);
-//   document.getElementById("mode").addEventListener("change", function() {
-//     calculateAndDisplayRoute(directionsService, directionsDisplay);
-//   });
-// }
-//
-// function calculateAndDisplayRoute(directionsService, directionsDisplay) {
-//   var selectedMode = document.getElementById("mode").value;
-//   directionsService.route(
-//     {
-//       // origin: { lat: 37.77, lng: -122.447 }, // Haight.
-//       // destination: { lat: 37.768, lng: -122.511 }, // Ocean Beach.
-//       origin: {
-//         lat: parseFloat(start_lat),
-//         lng: parseFloat(start_lon)
-//       }, // Haight.
-//       destination: {
-//         lat: parseFloat(end_lat),
-//         lng: parseFloat(end_lon)
-//       }, // Ocean Beach.
-//
-//       // Note that Javascript allows us to access the constant
-//       // using square brackets and a string value as its
-//       // "property."
-//       travelMode: google.maps.TravelMode[selectedMode]
-//     },
-//     function(response, status) {
-//       if (status == "OK") {
-//         directionsDisplay.setDirections(response);
-//       } else {
-//         window.alert("Directions request failed due to " + status);
-//       }
-//     }
-//   );
-// }
-
+//Initiates the Map
 function initMap() {
   var map = new google.maps.Map(document.getElementById("map"), {
     zoom: 12,
@@ -119,18 +74,24 @@ function renderOneMap(route) {
        <!-- Portfolio Item Heading -->
        <h1 class="my-4">${route[0].route_name}
          <small></small>
-       </h1>`;
+       </h1>
+       `;
 
   var routeContentHtml = `<div class="col-md-4 mapContent">
-    <h3 class="my-3">Route Info</h3>
-    <p></p>
+  <hr>
+    <h2 class="my-3">Route Info</h2>
+    <hr>
     <h3 class="my-3"></h3>
     <ul>
-      <li><strong>Starting Point:</strong> ${route[0].start_point} ft.</li>
+      <li><strong>Starting Point - A:</strong> ${route[0].start_point}</li>
+      <li><strong>Waypoint One - B:</strong> ${route[0].waypointOne}</li>
+      <li><strong>Waypoint Two - C:</strong> ${route[0].waypointTwo}</li>
+      <li><strong>Ending Point - D:</strong> ${route[0].end_point}</li>
       <li><strong>Pros:</strong> ${route[0].pros}</li>
       <li><strong>Cons:</strong> ${route[0].cons}</li>
     </ul>
-  </div>`;
+  </div>
+  `;
 
   // start_lat = `${route[0].start_lat}`;
   // start_lon = `${route[0].start_lon}`;
@@ -151,12 +112,16 @@ function renderOneMap(route) {
 function renderRouteList(route) {
   console.log("getting ready for the list");
 
-  var otherRoutesHtml = `<div class="col-md-3 col-sm-6 mb-4" id="routeSection">
+  var otherRoutesHtml = `
+  <div class="col-md-3 col-sm-6 mb-4" id="routeSection">
+    <hr>
+    <h3 class="my-4">${route.route_name}</h3>
+    <hr>
       <a href="#" class="open-route" onclick="openSelectedRoute(this)" data-route-id="${route._id}">
         <img class="img-fluid" src="/images/routes-pic.jpg" alt="">
       </a>
       <ul>
-        <li><strong>Route Name:</stong> ${route.route_name}</li>
+        <hr>
         <li><strong>Start Point:</stong> ${route.start_point}</li
           <hr>
         <div class="modal-footer">
@@ -183,24 +148,24 @@ function openSelectedRoute(route) {
          <!-- Portfolio Item Heading -->
          <h1 class="my-4">${route.route_name}
            <small></small>
-         </h1>`;
+         </h1>
+         `;
 
     var routeContentHtml = `<div class="col-md-4 mapContent">
-      <h3 class="my-3">Route Info</h3>
-      <p></p>
+    <hr>
+      <h2 class="my-3">Route Info</h2>
+      <hr>
       <h3 class="my-3"></h3>
       <ul>
-        <li><strong>Miles:</strong> ${route.waypointOne} miles</li>
-        <li><strong>Climbing Feet:</strong> ${route.waypointTwo} ft.</li>
+        <li><strong>Starting Point - A:</strong> ${route.start_point}</li>
+        <li><strong>Waypoint One - B:</strong> ${route.waypointOne}</li>
+        <li><strong>Waypoint Two - C:</strong> ${route.waypointTwo}</li>
+        <li><strong>Ending Point - D:</strong> ${route.end_point}</li>
         <li><strong>Pros:</strong> ${route.pros}</li>
         <li><strong>Cons:</strong> ${route.cons}</li>
       </ul>
-    </div>`;
-
-    // start_lat = `${route.start_lat}`;
-    // start_lon = `${route.start_lon}`;
-    // end_lat = `${route.end_lat}`;
-    // end_lon = `${route.end_lon}`;
+    </div>
+    `;
 
     start = `${route.start_point}`;
     end = `${route.end_point}`;
@@ -304,8 +269,8 @@ function updateRouteModal(route) {
 
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="updateRoute">Update Rider</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></button>
+                <button type="button" class="btn btn-primary" id="updateRoute"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
               </div>
             </div>
           </div>

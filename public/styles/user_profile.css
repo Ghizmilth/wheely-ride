@@ -8,11 +8,11 @@ body {
   padding-top: 54px;
 }
 
-@media (min-width: 992px) {
+/*@media (min-width: 992px) {
   body {
     padding-top: 56px;
   }
-}
+}*/
 
 header.masthead {
   background: url("/images/user_profile.jpg") no-repeat center center scroll;
