@@ -8,6 +8,7 @@ This is a Bike Riding app that allows people to explore interesting bike rides a
 
 ### Technologies Used
 
+- JavaScript/jQuery
 - Express.js
 - Node.js
 - HTML
